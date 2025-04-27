@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All posts</h1>
+<a href="/posts/create/" class="btn btn-primary">Create post</a>
+<hr>
+{% for post in posts %}
+<div class="card mb-2">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <h6 class="card-subtitle mb-2
+               text-body-secondary">
+        {{post.author.username}}
+    </h6>
+    <a href="/posts/{{post.id}}"
+       class="card-link">See post</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

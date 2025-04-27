@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>{{post.title}}</h1>
+<br/>
+<small>{{post.author.username}}</small>
+<hr/>
+<img src="{{ post.image.url }}" style="max-width: 500px"/>
+<p>{{post.text}}</p>
+<hr/>
+<h4>Comments</h4>
+{% if request.user.is_authenticated %}
+<form method="POST" action="/posts/{{post.id}}/comment/">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-outline-secondary">Comment!</button>
+</form>
+{% else %}
+<p class="text-muted">You should log in before commenting</p>
+{% endif %}
+<hr/>
+{% for comment in comments %}
+<p>
+    <small>{{comment.author.username}}</small>
+    <br>
+    {{comment.text}}
+</p>
+{% endfor %}
+{% endblock %}
