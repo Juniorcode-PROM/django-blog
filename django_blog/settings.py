@@ -136,3 +136,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "media"
+
+CSRF_TRUSTED_ORIGINS = ["uk-blog.tapeline.dev"]
+CSRF_COOKIE_DOMAIN = "uk-blog.tapeline.dev"
